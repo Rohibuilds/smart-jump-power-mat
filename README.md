@@ -1,76 +1,29 @@
-<div align="center">
-
 # Smart Jump Power Mat
+**Rohi | RA TECH** · Robotics, electronics and embedded systems
 
-**ESP32 load-cell platform for jump analysis, scoring and real-time visual feedback.**
+An ESP32 load-cell jump game with a rocket on an ST7735 TFT and a live phone dashboard.
 
-![Status](https://img.shields.io/badge/status-working_prototype-00D9A5?style=flat-square)
-![Platform](https://img.shields.io/badge/platform-ESP32_%C2%B7_Sensors-101820?style=flat-square)
-![Brand](https://img.shields.io/badge/by-RA_TECH-101820?style=flat-square)
+**[Open the complete code](firmware/Smart_Jump_Mat_Final/Smart_Jump_Mat_Final.ino) · [Wiring and parts](hardware/README.md) · [How to build](docs/README.md)**
 
-</div>
+## What is included
+Startup tare, peak capture, game scores and best score, animated rocket, Wi-Fi dashboard, empty-mat re-tare and fallback access point.
 
-## Overview
+This repository restores the previously delivered project source and repairs identified software issues. It is a hardware prototype; source restoration does not constitute a new hardware test.
 
-A smart exercise mat that uses a load cell and HX711 amplifier to detect standing load and jump peaks. The system turns measurements into an interactive rocket game while presenting results on a TFT display and phone dashboard.
+## Get started
+1. Download the repository using **Code → Download ZIP** and extract it.
+2. Read the [wiring table](hardware/README.md); it retains the recovered pin map.
+3. Follow the [build and configuration guide](docs/README.md).
+4. Open `firmware/Smart_Jump_Mat_Final/Smart_Jump_Mat_Final.ino` in Arduino IDE. Keep the containing folder and companion headers together.
 
-> **Project status:** Working prototype
+## Code and validation
+- Main source: [Smart_Jump_Mat_Final.ino](firmware/Smart_Jump_Mat_Final/Smart_Jump_Mat_Final.ino)
+- [Dependency versions](DEPENDENCIES.md)
+- [Fixes and validation record](docs/VALIDATION.md)
+- [Build workflow](.github/workflows/build.yml) / [live build results](https://github.com/Rohibuilds/smart-jump-power-mat/actions)
 
-## Highlights
+## Source provenance
+Recovered from the earlier RA TECH deliverables `Smart_Jump_Mat_Final.ino and Smart_Jump_Mat_Wiring_Parts_Working_Guide.pdf`. The wiring was cross-checked against those files. This update preserves the project's original purpose and identifies later repairs separately.
 
-- Load-cell-based jump detection
-- HX711 signal smoothing
-- Standing and jump-state recognition
-- Interactive rocket scoring game
-- ST7735 TFT feedback
-- Phone-accessible analysis dashboard
-
-## Hardware
-
-| Component | Role |
-|---|---|
-| ESP32 development board | Main processing and control |
-| HX711 load-cell amplifier | Project subsystem |
-| Load cell or load-cell platform | Project subsystem |
-| 1.8-inch ST7735 TFT | Project subsystem |
-| Stable power supply | Project subsystem |
-| Mechanical mat or platform | Project subsystem |
-
-## Repository structure
-
-```text
-smart-jump-power-mat/
-├── firmware/   Tested source code and configuration notes
-├── hardware/   Wiring, components, PCB, and enclosure information
-├── docs/       Build guide, calibration, results, and troubleshooting
-├── media/      Prototype images, diagrams, and demo links
-└── README.md   Project overview and release status
-```
-
-## Current public release
-
-This initial release establishes the verified project overview and a clean documentation structure. Firmware, wiring diagrams, and media will be added only after each item is checked for accuracy and private credentials are removed.
-
-## Roadmap
-
-- [ ] Publish the calibrated firmware
-- [ ] Add the final load-cell mounting design
-- [ ] Document calibration for different users
-- [ ] Add repeatability tests and demo media
-
-## Safety and reproducibility
-
-- Verify every supply voltage before powering the controller or modules.
-- Use a common ground and a power source sized for peak motor or audio current.
-- Never commit Wi-Fi passwords, API keys, personal contact details, or certificates.
-- Recheck the published pin map against the tested hardware before assembly.
-
----
-
-<div align="center">
-
-**Designed and developed by [Rohi · RA TECH](https://github.com/Rohibuilds)**
-
-<sub>Build. Test. Improve. Share.</sub>
-
-</div>
+## Recent repairs
+Used 64-bit calibration sums; rejected failed calibration and stale HX711 readings; bounded jump events; made rocket timing independent of loop speed; fixed deadline rollover handling; added connection-error feedback and manual re-tare. Original tuning constants remain configurable, not physical force units.
