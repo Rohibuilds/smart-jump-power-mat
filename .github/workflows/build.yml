@@ -15,6 +15,6 @@ jobs:
         run: |
           arduino-cli core update-index --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
           arduino-cli core install esp32:esp32@3.3.0 --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
-          arduino-cli lib install "Adafruit GFX Library@1.11.11" "Adafruit ST7735 and ST7789 Library@1.11.0" "HX711@0.7.5"
+          arduino-cli lib install "Adafruit GFX Library@1.11.11" "Adafruit ST7735 and ST7789 Library@1.11.0" "HX711 Arduino Library@0.7.5"
       - name: Compile the original board target
         run: arduino-cli compile --warnings all --fqbn 'esp32:esp32:esp32' 'firmware/Smart_Jump_Mat_Final'
